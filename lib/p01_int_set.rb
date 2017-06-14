@@ -34,12 +34,15 @@ class IntSet
   end
 
   def insert(num)
+    @store[num % num_buckets] << num unless include?(num)
   end
 
   def remove(num)
+    @store[num % num_buckets].delete(num)
   end
 
   def include?(num)
+    @store[num % num_buckets].include?(num)
   end
 
   private
